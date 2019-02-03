@@ -75,17 +75,17 @@ fi
 if [[ "$OS" != "Ubuntu" ]]; then
   cat /etc/*-release
   echo
-  echo "Are you using Ubuntu 16.04 or higher?"
+  echo "Are you using Ubuntu 14.04.5 or higher?"
   exit 1
 fi
 
-TARGET='16.03'
+TARGET='14.04.5'
 if [[ ${VER%.*} -eq ${TARGET%.*} ]] && [[ ${VER#*.} > ${TARGET#*.} ]] || [[ ${VER%.*} -gt ${TARGET%.*} ]]; then
   :
 else
   cat /etc/*-release
   echo
-  echo "Are you using Ubuntu 16.04 or higher?"
+  echo "Are you using Ubuntu 14.04.5 or higher?"
   exit 1
 fi
 
