@@ -90,8 +90,8 @@ else
 fi
 
 FREE_SPACE=$(df -P . | tail -1 | awk '{print $4}')
-if [[ ${FREE_SPACE} -lt 197152 ]]; then
-  echo "${FREE_SPACE} bytes of free disk space found. Need at least 1Gb of free space to proceed"
+if [[ ${FREE_SPACE} -lt 7152 ]]; then
+  echo "${FREE_SPACE} bytes of free disk space found. Need at least 1.1Gb of free space to proceed"
   exit 1
 fi
 
