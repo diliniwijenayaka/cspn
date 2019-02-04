@@ -75,31 +75,31 @@ fi
 if [[ "$OS" != "Ubuntu" ]]; then
   cat /etc/*-release
   echo
-  echo "Are you using Ubuntu 16.04 or higher?"
+  echo "Are you using Ubuntu 14.04 or higher?"
   exit 1
 fi
 
-TARGET='16.03'
+TARGET='14.03'
 if [[ ${VER%.*} -eq ${TARGET%.*} ]] && [[ ${VER#*.} > ${TARGET#*.} ]] || [[ ${VER%.*} -gt ${TARGET%.*} ]]; then
   :
 else
   cat /etc/*-release
   echo
-  echo "Are you using Ubuntu 16.04 or higher?"
+  echo "Are you using Ubuntu 14.04 or higher?"
   exit 1
 fi
 
 FREE_SPACE=$(df -P . | tail -1 | awk '{print $4}')
-if [[ ${FREE_SPACE} -lt 7152 ]]; then
-  echo "${FREE_SPACE} bytes of free disk space found. Need at least 1.1Gb of free space to proceed"
+if [[ ${FREE_SPACE} -lt 2097152 ]]; then
+  echo "${FREE_SPACE} bytes of free disk space found. Need at least 2Gb of free space to proceed"
   exit 1
 fi
 
 echo -e "\\e[0m"
 
 prettySection "Step 2: Installing Dependencies"
-apt update
-apt install -y ufw docker.io
+apt-get update
+apt-get install -y ufw docker.io
 
 prettySection "Step 3: Configuring Firewall"
 ufw limit 22
